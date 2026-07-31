@@ -4,7 +4,6 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -49,4 +48,37 @@ model AiUsageLog {
   latencyMs       Int
   createdAt       DateTime @default(now())
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model QuantoMother {
+  id               String        @id @default(uuid()) @db.Uuid
+  motherCode       String        @unique @db.VarChar(64)
+  version          String        @default("3.2.0")
+  createdAt        DateTime      @default(now())
+  children         ChildQuanto[]
+}
+
+model ChildQuanto {
+  id               String        @id @default(uuid()) @db.Uuid
+  quantaHash       String        @unique @db.VarChar(128)
+  parentHash       String?       @db.VarChar(128)
+  motherId         String        @db.Uuid
+  ownerId          String        @db.Uuid
+  isHead           Boolean       @default(true)
+
+  title            String
+  description      String        @db.Text
+  mediaUrls        String[]
+
+  priceDecimal     Decimal       @db.Decimal(19, 4)
+  currency         String        @default("USD") @db.VarChar(3)
+  stockAvailable   Int           @default(0)
+
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  mother           QuantoMother  @relation(fields: [motherId], references: [id])
+
+  @@index([quantaHash])
+  @@index([ownerId])
 }
