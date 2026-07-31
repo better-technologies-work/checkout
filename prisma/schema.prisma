@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  name          String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  accounts      Account[]
+  aiUsageLogs   AiUsageLog[]
+}
+
+model Account {
+  id              String   @id @default(uuid())
+  userId          String
+  provider        String
+  providerAccountId String
+  type            String   @default("oauth")
+  refresh_token   String?  @db.Text
+  access_token    String?  @db.Text
+  expires_at      Int?
+  token_type      String?
+  scope           String?
+  id_token        String?  @db.Text
+  session_state   String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model AiUsageLog {
+  id              String   @id @default(uuid())
+  userId          String
+  traceHash       String   @unique
+  promptTokens    Int
+  completionTokens Int
+  totalTokens     Int
+  costUsd         Decimal  @db.Decimal(19, 4)
+  model           String
+  latencyMs       Int
+  createdAt       DateTime @default(now())
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

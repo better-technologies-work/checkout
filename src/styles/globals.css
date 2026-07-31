@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --sovereign-orange: #E85D04;
+  --sovereign-orange-hover: #DC2F02;
+  --sovereign-orange-active: #9D0208;
+  --sovereign-navy: #1B263B;
+  --sovereign-slate: #415A77;
+  --sovereign-mist: #E0E1DD;
+  --sovereign-cloud: #F8F9FA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--sovereign-cloud);
+  color: var(--sovereign-navy);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn-sovereign {
+    @apply inline-flex items-center justify-center
+      rounded-lg px-6 py-3
+      bg-sovereign-orange text-white
+      font-semibold text-sm
+      transition-all duration-200 ease-in-out
+      focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2
+      disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-sovereign:hover {
+    background-color: var(--sovereign-orange-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(232, 93, 4, 0.35);
+  }
+
+  .btn-sovereign:active {
+    background-color: var(--sovereign-orange-active);
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  .btn-sovereign-outline {
+    @apply inline-flex items-center justify-center
+      rounded-lg px-6 py-3
+      border-2 border-sovereign-orange text-sovereign-orange
+      bg-transparent font-semibold text-sm
+      transition-all duration-200 ease-in-out
+      focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2;
+  }
+
+  .btn-sovereign-outline:hover {
+    background-color: rgba(232, 93, 4, 0.08);
+  }
+
+  .btn-sovereign-ghost {
+    @apply inline-flex items-center justify-center
+      rounded-lg px-6 py-3
+      text-sovereign-orange
+      bg-transparent font-semibold text-sm
+      transition-all duration-200 ease-in-out
+      focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2;
+  }
+
+  .btn-sovereign-ghost:hover {
+    background-color: rgba(232, 93, 4, 0.08);
+  }
+
+  .card-sovereign {
+    @apply rounded-xl border border-sovereign-mist bg-white p-6 shadow-sm;
+  }
+
+  .input-sovereign {
+    @apply w-full rounded-lg border border-sovereign-mist px-4 py-3
+      text-sovereign-navy placeholder-sovereign-slate/50
+      transition-all duration-200
+      focus:border-sovereign-orange focus:outline-none focus:ring-2 focus:ring-sovereign-orange/20;
+  }
+}
