@@ -1,18 +1,4 @@
 {
-    "services": {
-        "frontend": {
-            "root": ".",
-            "framework": "vite",
-            "outputDirectory": "dist"
-        }
-    },
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": {
-                "type": "service",
-                "service": "frontend"
-            }
-        }
-    ]
+    "framework": "vite",
+    "outputDirectory": "dist"
 }
