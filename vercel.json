@@ -3,26 +3,6 @@
         "frontend": {
             "root": ".",
             "framework": "vite"
-        },
-        "backend": {
-            "root": "backend",
-            "entrypoint": "src/main.ts"
         }
-    },
-    "rewrites": [
-        {
-            "source": "/api(/.*)?",
-            "destination": {
-                "type": "service",
-                "service": "backend"
-            }
-        },
-        {
-            "source": "/(.*)",
-            "destination": {
-                "type": "service",
-                "service": "frontend"
-            }
-        }
-    ]
+    }
 }
