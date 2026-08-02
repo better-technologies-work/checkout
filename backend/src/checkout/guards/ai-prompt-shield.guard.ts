@@ -14,7 +14,7 @@ const BLOCKED_PATTERNS = [
 @Injectable()
 export class AiPromptShieldGuard implements CanActivate {
   canActivate(context: ExecutionContext): boolean {
-    const req = context.switchToHttp().getRequest<Request>();
+    const req = context.switchToHttp().getRequest() as any;
     const body = req.body;
 
     if (!body?.prompt && !body?.messages) {

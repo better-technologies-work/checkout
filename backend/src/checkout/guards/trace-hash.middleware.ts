@@ -10,7 +10,7 @@ export class TraceHashMiddleware implements NestMiddleware {
       .update(`${traceId}-${Date.now()}-${req.originalUrl}`)
       .digest('hex');
 
-    req['traceHash'] = traceHash;
+    (req as any)['traceHash'] = traceHash;
     res.setHeader('X-Trace-Hash', traceHash);
 
     next();

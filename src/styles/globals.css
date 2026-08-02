@@ -1,13 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
 :root {
-  --sovereign-orange: #E85D04;
-  --sovereign-orange-hover: #DC2F02;
-  --sovereign-orange-active: #9D0208;
+  --sovereign-orange: #FF5E00;
+  --sovereign-orange-hover: #E85D04;
+  --sovereign-orange-active: #DC2F02;
   --sovereign-navy: #1B263B;
   --sovereign-slate: #415A77;
   --sovereign-mist: #E0E1DD;
@@ -24,8 +24,8 @@ html,
 body,
 #root {
   height: 100%;
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--sovereign-cloud);
+  font-family: 'Raleway', system-ui, sans-serif;
+  background-color: #FFFFFF;
   color: var(--sovereign-navy);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,54 +40,70 @@ body,
       transition-all duration-200 ease-in-out
       focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2
       disabled:opacity-50 disabled:cursor-not-allowed;
+    box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
   }
 
   .btn-sovereign:hover {
     background-color: var(--sovereign-orange-hover);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(232, 93, 4, 0.35);
+    box-shadow: 0 0 25px rgba(255, 94, 0, 0.6);
   }
 
   .btn-sovereign:active {
     background-color: var(--sovereign-orange-active);
     transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 94, 0, 0.3);
+  }
+
+  .btn-sovereign:disabled {
     box-shadow: none;
   }
 
-  .btn-sovereign-outline {
-    @apply inline-flex items-center justify-center
-      rounded-lg px-6 py-3
-      border-2 border-sovereign-orange text-sovereign-orange
-      bg-transparent font-semibold text-sm
-      transition-all duration-200 ease-in-out
-      focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2;
-  }
-
-  .btn-sovereign-outline:hover {
-    background-color: rgba(232, 93, 4, 0.08);
-  }
-
-  .btn-sovereign-ghost {
-    @apply inline-flex items-center justify-center
-      rounded-lg px-6 py-3
-      text-sovereign-orange
-      bg-transparent font-semibold text-sm
-      transition-all duration-200 ease-in-out
-      focus:outline-none focus:ring-2 focus:ring-sovereign-orange focus:ring-offset-2;
-  }
-
-  .btn-sovereign-ghost:hover {
-    background-color: rgba(232, 93, 4, 0.08);
-  }
-
   .card-sovereign {
-    @apply rounded-xl border border-sovereign-mist bg-white p-6 shadow-sm;
+    @apply rounded-xl border border-slate-100 p-6;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
   }
 
   .input-sovereign {
-    @apply w-full rounded-lg border border-sovereign-mist px-4 py-3
+    @apply w-full rounded-lg border border-slate-200 px-4 py-3
       text-sovereign-navy placeholder-sovereign-slate/50
       transition-all duration-200
       focus:border-sovereign-orange focus:outline-none focus:ring-2 focus:ring-sovereign-orange/20;
+  }
+
+  .splash-check {
+    animation: splashIn 0.6s ease-out forwards;
+  }
+
+  @keyframes splashIn {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .receipt-slide {
+    animation: slideUp 0.4s ease-out forwards;
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 }

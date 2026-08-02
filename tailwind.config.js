@@ -6,9 +6,9 @@ export default {
     extend: {
       colors: {
         sovereign: {
-          orange: '#E85D04',
-          'orange-hover': '#DC2F02',
-          'orange-active': '#9D0208',
+          orange: '#FF5E00',
+          'orange-hover': '#E85D04',
+          'orange-active': '#DC2F02',
           navy: '#1B263B',
           slate: '#415A77',
           mist: '#E0E1DD',
@@ -17,9 +17,9 @@ export default {
         },
       },
       fontFamily: {
-        heading: ['Inter', 'system-ui', 'sans-serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        heading: ['Raleway', 'system-ui', 'sans-serif'],
+        body: ['Raleway', 'system-ui', 'sans-serif'],
+        mono: ['Raleway', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'sovereign-sm': '0 1px 2px 0 rgba(232, 93, 4, 0.05)',

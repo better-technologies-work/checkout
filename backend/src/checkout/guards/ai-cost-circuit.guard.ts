@@ -15,7 +15,7 @@ export class AiCostCircuitGuard implements CanActivate {
   private readonly WINDOW_MS = 60_000;
 
   canActivate(context: ExecutionContext): boolean {
-    const req = context.switchToHttp().getRequest<Request>();
+    const req = context.switchToHttp().getRequest() as any;
     const userId = req['user']?.id || req.headers['x-user-id'] || 'anonymous';
     const now = Date.now();
 

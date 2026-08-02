@@ -1,0 +1,159 @@
+Alpha OS - Mother Quanta Checkout
+
+🚀 Hoja de Ruta de Ejecución para el Programador
+1️⃣ Fase 1: Migración Quirúrgica de Base de Datos (Etapa 4.5)
+Antes de escribir cualquier línea de código NestJS o React, debe actualizar la base de datos:
+Abrir prisma/schema.prisma e inyectar el modelo CheckoutTransaction al final del archivo.
+Correr los comandos en la terminal:
+Bash
+npx prisma migrate dev --name add_mother_checkout_transactions
+npx prisma generate
+git add . && git commit -m "chores(database): safe zero-break migration for MotherCheckoutQuanta added"
+
+
+2️⃣ Fase 2: Carga de Contexto e Inyección de Wrappers (Etapa 5)
+Abrir la IA del IDE (Cursor, Copilot, VS Code).
+Pegar el Prompt Maestro junto con el Documento Fundacional Corregido de MotherCheckoutQuanta.
+Solicitar y ejecutar los 5 Wrappers de forma estrictamente secuencial, realizando un commit atómico tras completar cada uno:
+Wrapper 1 (Backend ACID): Ingesta DTOs Zod, servicios NestJS, prisma.$transaction() y cálculo de idempotencia <800ms.
+Wrapper 2 (Sovereign UI): Interfaz en bg-white, acento Naranja Táctico #FF5E00, bloqueo anti-doble clic y tipografía Raleway.
+Wrapper 3 (AI Discovery): Marcado Schema.org/Order y generación del archivo /docs/quanta/checkout-engine.md.
+Wrapper 4 (QA Tests): Batería de pruebas en Jest para verificar rollback financiero e idempotencia.
+Wrapper 5 (Zero-Break E2E): Tests en Playwright que simulan el flujo completo desde LiveEdgeQuanta hasta la emisión del txHash.
+3️⃣ Fase 3: Validación del Perro Guardián y Tagging (Etapa 6)
+Ejecutar la suite de fiscalización en la terminal local:
+Bash
+npm run test           # Fiscaliza Unit & Integration Tests (Jest)
+npx playwright test    # Fiscaliza E2E Visual & Flow Tests
+npm run build          # Verifica compilación TypeScript sin errores
+Si todo pasa en verde, el programador hace la fusión a main y CommitQuanta se encarga de la compilación y entrega a producción.
+
+Fase 4: Despliegue (Railway + Vercel)
+Ejecutan las pruebas unitarias y E2E, aprueban el código y despliegan a producción.
+Fase 5: Testea y reporta resultados.
+
+Alpha OS - Mother CheckoutQuanta (v3.2)
+🧬 CÉLULA COMERCIAL FINANCIERA
+Plaintext
+┌────────────────────────────────────────────────────────────────────────┐
+│                   ALPHA OS: MOTHER CHECKOUTQUANTA                      │
+│                                                                        │
+│   1. LiveEdgeQuanta (ENTRADA / RELEVO)                                 │
+│      └─ Pasa el productQuantaHash y la reserva de stock a Checkout.    │
+│                                                                        │
+│   2. MotherCheckoutQuanta (MOTOR ACID / PROCESADOR)                    │
+│      └─ Procesa cobro en <800ms, valida idempotencia y registra        │
+│         la transacción con precisión Decimal(19,4) emitiendo txHash.   │
+│                                                                        │
+│   3. Downstream Triggers (POST-VENTA)                                  │
+│      └─ Emite eventos desacoplados hacia Fulfillment y Cashback.       │
+└────────────────────────────────────────────────────────────────────────┘
+🛠️ Operativa Práctica de la Célula
+LiveEdgeQuanta (El Relevo): Sirve la vitrina ultra-rápida en memoria/RAM. Cuando el cliente hace clic en "Comprar", transfiere el productQuantaHash y el token de reserva hacia MotherCheckoutQuanta.
+MotherCheckoutQuanta (El Guardián ACID): Procesa el cobro en la pasarela externa, valida la clave de idempotencia en Layer 0, descuenta el stock y graba el registro de auditoría en la tabla de transacciones bajo un txHash inmutable con precisión Decimal(19,4).
+Downstream Triggers: Al confirmarse el txHash, dispara webhooks en segundo plano hacia FulfillmentQuanta (logística) y CashbackQuanta (incentivos).
+📦 Suite de 5 Wrappers Tácticos
+🟧 WRAPPER 1: BACKEND ACID Y TYPES (Para pegar en el IDE)
+Plaintext
+PROMPT PARA IDE: Construir Módulo Backend, DTOs y Servicios para "MotherCheckoutQuanta"
+
+Actúa como Arquitecto Principal de Software y Guardián ACID. Implementa la infraestructura Backend para el módulo 'MotherCheckoutQuanta' en NestJS, Prisma y Zod bajo las siguientes reglas estrictas:
+
+1. MODULARIDAD Y DTOs:
+   - Crea el módulo NestJS 'MotherCheckoutQuanta' con su correspondiente Controller y Service.
+   - Define Schemas de validación Zod para las peticiones de checkout especificando: payload de cobro, 'idempotencyKey' y el pasaporte obligatorio 'productQuantaHash' del producto a adquirir.
+
+2. FINANCIAL PRECISION & ATOMICIDAD ACID:
+   - PROHIBIDO el uso del tipo 'Float' o 'Number' de JS para importes monetarios, precios o tasas.
+   - Configura y maneja todos los campos monetarios utilizando estrictamente 'Decimal(19,4)' en Prisma y la librería Decimal.js en el servicio.
+   - Envuelve todo el proceso de registro contable en la tabla de transacciones, deducción de inventario y actualización de orden dentro de una transacción atómica inquebrantable usando 'prisma.$transaction()'. Si ocurre cualquier fallo de red o DB, ejecuta rollback total.
+
+3. IDEMPOTENCIA Y LATENCIA (LAYER_0_DETERMINISTIC):
+   - Corre en Capa 0 (cómputo determinista $0.00 USD). Tiempo total de ejecución objetivo: <800ms.
+   - Implementa un mecanismo de idempotencia en memoria/caché mediante la clave 'idempotencyKey'. Si entra un duplicado por red, retorna la respuesta previa en <100ms sin re-ejecutar transacciones en la base de datos.
+   - Implementa Rate Limiting estricto utilizando '@nestjs/throttler' para blindar el endpoint contra abusos y ataques de Carding.
+
+4. ZERO-BREAK & REGISTRO DE TRANSACCIÓN:
+   - No alteres esquemas legacy existentes. El módulo debe ser 100% retrocompatible.
+   - Genera un hash criptográfico inmutable de auditoría de transacción ('txHash') al completar la operación contable y vincúlalo al 'productQuantaHash' recibido.
+🟦 WRAPPER 2: SOVEREIGN UI Y DOPAMINA (Para pegar en el IDE)
+Plaintext
+PROMPT PARA IDE: Componente UI para "MotherCheckoutQuanta" con Sovereign UI™
+
+Actúa como Diseñador UI/UX Frontend Senior. Construye el componente visual de interfaz de usuario en React con Tailwind CSS y Lucide Icons para 'MotherCheckoutQuanta', siguiendo las directivas del Sovereign Light Mode™:
+
+1. RESTRICCIONES VISUALES ESTRICTAS:
+   - PROHIBICIÓN ABSOLUTA de clases de modo oscuro (está estrictamente prohibido usar prefijos 'dark:').
+   - Lienzo base blanco impoluto 'bg-white' con bordes limpios, sombras suaves de profundidad y estilo Glassmorphism ligero ('bg-white/80 backdrop-blur-md border border-slate-100').
+
+2. TIPOGRAFÍA GLOBAL Y ACCENTOS:
+   - ESTÁNDAR DE TIPOGRAFÍA: Aplica la fuente "Raleway" para la TOTALIDAD de títulos, etiquetas, textos narrativos, montos monetarios, desgloses financieros y la exhibición del 'txHash'. Prohibido el uso de tipografías monoespaciadas secundarias.
+
+3. BOTÓN TÁCTICO Y FEEDBACK DE DOPAMINA:
+   - El botón principal 'Pagar Ahora / Confirmar Compra' debe usar el color Naranja Táctico '#FF5E00' con efecto de resplandor glow continuo (`shadow-[0_0_20px_rgba(255,94,0,0.4)] hover:shadow-[0_0_25px_rgba(255,94,0,0.6)]`).
+   - Bloqueo de UI inmediato: Al hacer el primer clic, deshabilita de inmediato el botón y los inputs para prevenir dobles toques por parpadeos de red.
+   - Al completarse la transacción exitosamente en backend, dispara una animación Splash de Check Verde de confirmación y transforma la interfaz instantáneamente en un recibo visual inalterable mostrando el código 'txHash' generado.
+🟩 WRAPPER 3: AI DISCOVERY (Para pegar en el IDE)
+Plaintext
+PROMPT PARA IDE: Infraestructura de AI Discovery y Optimización para "MotherCheckoutQuanta"
+
+Actúa como Ingeniero de Infraestructura Web y SEO para Agentes AI. Implementa las capas de descubrimiento y optimización estructurada en el módulo 'MotherCheckoutQuanta':
+
+1. INYECCIÓN DE METADATOS Y SCHEMA.ORG:
+   - Inyecta etiquetas semánticas HTML5 puras (`<main>`, `<section>`, `<article>`, `<form>`).
+   - Genera e inyecta dinámicamente un bloque de datos estructurados JSON-LD bajo los estándares Schema.org para 'Order' y 'CheckoutPage', permitiendo que crawlers e IA externas auditen y entiendan la transacción.
+
+2. MARKDOWN MIRROR (.md):
+   - Crea un archivo espejo en la raíz del módulo llamado '/docs/quanta/checkout-engine.md'.
+   - El archivo debe documentar en texto plano estructurado: los endpoints públicos del módulo, las reglas de cálculo atómico, los esquemas de validación de entradas/salidas, y la guía de verificación del pasaporte 'txHash'. Esto permitirá a agentes de IA externos consumir o auditar la funcionalidad de la pasarela.
+🟨 WRAPPER 4: QA Y FISCALIZACIÓN (Para pegar en el IDE)
+Plaintext
+PROMPT PARA IDE: Pruebas Unitarias y Fiscalización ACID para "MotherCheckoutQuanta"
+
+Actúa como Ingeniero de Control de Calidad (QA Automator). Genera la suite de pruebas unitarias y de integración backend en Jest (`mother-checkout.spec.ts`) para fiscalizar la resiliencia de 'MotherCheckoutQuanta':
+
+1. PRUEBAS DE PRISMA TRANSACTION & ROLLBACK:
+   - Simula un fallo en medio del proceso de pago (ej. caída simulada de DB o error al emitir el recibo).
+   - Verifica que 'prisma.$transaction()' realice un rollback 100% perfecto, asegurando que no queden registros huérfanos ni inconsistencias de inventario en la base de datos.
+
+2. PRUEBA DE PRECISIÓN DECIMAL:
+   - Ejecuta tests de operaciones matemáticas sobre precios, impuestos y tasas para comprobar que NO existe deriva o error de redondeo flotante. Todo cálculo debe verificar exactitud matemática estricta de 4 decimales con Decimal(19,4).
+
+3. PRUEBA DE IDEMPOTENCIA Y CONCURRENCIA:
+   - Realiza dos peticiones simultáneas con la misma 'idempotencyKey'. Verifica que solo una transacción se ejecute en la base de datos y que la segunda retorne la respuesta cacheada sin duplicar cobros, respondiendo en <800ms.
+🟪 WRAPPER 5: ZERO-BREAK E2E (Para pegar en el IDE)
+Plaintext
+PROMPT PARA IDE: Pruebas End-to-End (E2E) con Playwright para "MotherCheckoutQuanta"
+
+Actúa como Ingeniero Principal de QA E2E. Crea la suite de pruebas End-to-End en Playwright (`mother-checkout.e2e-spec.ts`) para validar el flujo completo y la cero ruptura del sistema legacy:
+
+1. FLUJO COMPLETO LIVEEDGE -> CHECKOUT:
+   - Simula la navegación del usuario desde la vitrina 'LiveEdgeQuanta' hasta hacer clic en 'Comprar' transfiriendo el 'productQuantaHash'.
+   - Automatiza el llenado del formulario y el clic en el botón Naranja Táctico ('#FF5E00').
+
+2. FISCALIZACIÓN VISUAL Y DE UI:
+   - Valida que el botón Naranja Táctico se deshabilite inmediatamente tras el primer clic.
+   - Verifica que la animación de Check Verde se despliegue correctamente y la pantalla se transforme en el recibo final exhibiendo la tipografía oficial 'Raleway' y el código 'txHash'.
+   - Confirma la ausencia total de clases CSS de modo oscuro ('dark:') en todo el DOM renderizado.
+
+3. MANDATO ZERO-BREAK:
+   - Asegura mediante aserciones que los flujos de navegación preexistentes y los módulos de orquestación existentes no sufran regresiones ni errores tras la integración de 'MotherCheckoutQuanta'.
+🤖 Prompt Maestro de Ejecución (Para tu IDE)
+Para inicializar el módulo en tu IDE (Cursor, OpenCode o Claude), copia y pega esta instrucción junto con el documento:
+Plaintext
+🤖 PROMPT MAESTRO: EXECUTOR DE DOCUMENTO FOUNDATIONAL QUANTA (ALPHA OS V3.2)
+
+[CONTEXTO Y ROL]
+Actúas como el Arquitecto e Ingeniero de Software Principal de Alpha OS. Se te ha otorgado acceso al Documento Fundacional de "MotherCheckoutQuanta". Tu objetivo es procesar la especificación e implementar el código sin desviaciones técnicas y con 0% de margen de error.
+
+[REGLAS INMUTABLES DE EJECUCIÓN]
+1. ZERO-BREAK MANDATE: El código generado no debe romper rutas, tipos ni datos del sistema preexistente.
+2. LAYER 0 DETERMINISTIC: Prioriza cómputo local ($0.00 USD) e idempotencia en memoria <800ms.
+3. FINANCIAL PRECISION: Todos los campos monetarios deben usar Decimal(19,4) en backend y tipografía Raleway global en frontend.
+4. SOVEREIGN UI™: Prohibido estrictamente usar clases de modo oscuro (`dark:`). Utiliza fondo `bg-white` y el Botón Táctico `#FF5E00` con resplandor glow.
+5. TRANSACTIONS & HASHES: Las compras generan un 'txHash' de auditoría y se vinculan al 'productQuantaHash' del producto vendido.
+
+[INSTRUCCIÓN PASO A PASO]
+Lee el Documento Fundacional proporcionado y confirma que has cargado el contexto. Cuando te indique un número de Wrapper (del 1 al 5), generarás ÚNICAMENTE el código completo, tipado, limpio y listo para producción correspondiente a ese Wrapper.
+
+Confirma con: "🛡️ [MotherCheckoutQuanta Loaded] Listo para ejecutar Wrappers."

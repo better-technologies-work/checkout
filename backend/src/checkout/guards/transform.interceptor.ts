@@ -17,7 +17,7 @@ export interface ApiResponse<T> {
 @Injectable()
 export class TransformInterceptor<T> implements NestInterceptor<T, ApiResponse<T>> {
   intercept(context: ExecutionContext, next: CallHandler): Observable<ApiResponse<T>> {
-    const req = context.switchToHttp().getRequest();
+    const req = context.switchToHttp().getRequest() as any;
     const traceHash = req['traceHash'] || 'unknown';
 
     return next.handle().pipe(

@@ -82,3 +82,33 @@ model ChildQuanto {
   @@index([quantaHash])
   @@index([ownerId])
 }
+
+model CheckoutTransaction {
+  id                  String    @id @default(uuid()) @db.Uuid
+  idempotencyKey      String    @unique @db.VarChar(128)
+  productQuantaHash   String    @db.VarChar(128)
+  txHash              String    @unique @db.VarChar(256)
+
+  amount              Decimal   @db.Decimal(19, 4)
+  currency            String    @default("USD") @db.VarChar(3)
+  tax                 Decimal   @db.Decimal(19, 4) @default(0)
+  fee                 Decimal   @db.Decimal(19, 4) @default(0)
+  total               Decimal   @db.Decimal(19, 4)
+
+  status              String    @default("PENDING") @db.VarChar(32)
+  paymentMethod       String?   @db.VarChar(64)
+  gatewayResponse     Json?
+
+  customerEmail       String?   @db.VarChar(256)
+  customerName        String?   @db.VarChar(256)
+
+  stockDeducted       Boolean   @default(false)
+  orderUpdated        Boolean   @default(false)
+
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  @@index([productQuantaHash])
+  @@index([status])
+  @@index([createdAt])
+}
