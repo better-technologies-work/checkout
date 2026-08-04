@@ -1,4 +1,4 @@
-allowBuilds:
-  '@nestjs/core': true
-  '@prisma/engines': true
-  prisma: true
+packages:
+  - 'apps/*'
+  - 'backend'
+  - '.'
